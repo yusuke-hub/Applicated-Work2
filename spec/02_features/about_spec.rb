@@ -77,7 +77,8 @@ RSpec.feature "Homeページ、サインアップ、ログイン、ログアウ�
     before do
       login(@user)
       visit user_path(@user)
-      click_on "logout"
+      all("a[data-method='delete'][href='/users/sign_out']")[0].click
+     # click_on "logout"
     end
     scenario "正しくログアウトして、リダイレクトされているか" do
       expect(page).to have_current_path "/"
@@ -91,17 +92,18 @@ RSpec.feature "Homeページ、サインアップ、ログイン、ログアウ�
     scenario "ログイン時" do
       login(@user)
       visit root_path
-      expect(page).to have_link "Home",href: user_path(@user)
-      expect(page).to have_link "Users",href: users_path
-      expect(page).to have_link "Books",href: books_path
-      expect(page).to have_link "logout",href: destroy_user_session_path
+      expect(page).to have_link "",href: user_path(@user)
+      expect(page).to have_link "",href: users_path
+      expect(page).to have_link "",href: books_path
+      expect(page).to have_link "",href: destroy_user_session_path
     end
     scenario "ログアウト時" do
       visit root_path
-      expect(page).to have_link "Home",href: root_path
-      expect(page).to have_link "About",href: "/home/about"
-      expect(page).to have_link "login",href: new_user_session_path
-      expect(page).to have_link "sign up",href: new_user_registration_path
+      expect(page).to have_link "",href: root_path
+      expect(page).to have_link "",href: "/home/about"
+      expect(page).to have_link "",href: new_user_session_path
+      expect(page).to have_link "",href: new_user_registration_path
     end
   end
 end
+
