@@ -3,10 +3,10 @@
 	<div class="col-xs-3">
 
 		<h2>User info</h2>
-		<%= render 'users/profile', user: @book.user %>
+		<%= render 'users/profile' %>
 
 		<h2>New book</h2>
-		<%= render 'books/newform', book: Book.new %>
+		<%= render 'books/newform' %>
 
 	</div>
 
@@ -23,11 +23,8 @@
 					</td>
 					<td><%= link_to @book.title, @book %></td>
 					<td><%= @book.body %></td>
-					<!--もしブックユーザーがカレントユーザーと一致しているならeditとdestroyのリンクを表示する。-->
-					<% if @book.user == current_user %>
 					<td><%= link_to "Edit",edit_book_path(@book), class: "btn-sm btn-success edit_book_#{@book.id}" %></td>
 					<td><%= link_to "Destroy",@book, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@book.id}" %></td>
-					<% end %>
 				</tr>
 			</table>
 
