@@ -36,4 +36,4 @@ class UsersController < ApplicationController
   	end
    end
 
-endx
+end
