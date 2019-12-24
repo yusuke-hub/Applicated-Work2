@@ -13,3 +13,11 @@
 		<%= f.submit class: "btn btn-primary col-xs-12" %>
 	</div>
 <% end %>
+<div id="errors_explanation">
+<% if book.errors.any? %>
+  <%= book.errors.count %>error</br>
+  <%= book.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>	
+</div>

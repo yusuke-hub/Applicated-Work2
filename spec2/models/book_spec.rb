@@ -17,7 +17,7 @@ RSpec.describe 'Bookモデルのテスト', type: :model do
         expect(book.valid?).to eq false;
       end
       it '200文字以下であること' do
-        book.body = Faker::Lorem.characters(number:201)
+        book.body = Faker::Lorem.characters(201)
         expect(book.valid?).to eq false;
       end
     end

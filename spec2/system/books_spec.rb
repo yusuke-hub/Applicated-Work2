@@ -7,8 +7,8 @@ describe '投稿のテスト' do
   let!(:book2) { create(:book, user: user2) }
   before do
   	visit new_user_session_path
-  	fill_in 'user[name]', with: user.name
-  	fill_in 'user[password]', with: user.password
+  	fill_in 'Name', with: user.name
+  	fill_in 'Password', with: user.password
   	click_button 'Log in'
   end
   describe 'サイドバーのテスト' do
@@ -26,8 +26,8 @@ describe '投稿のテスト' do
 		  	expect(page).to have_button 'Create Book'
 		  end
 		  it '投稿に成功する' do
-		  	fill_in 'book[title]', with: Faker::Lorem.characters(number:5)
-		  	fill_in 'book[body]', with: Faker::Lorem.characters(number:20)
+		  	fill_in 'Title', with: Faker::Lorem.characters(5)
+		  	fill_in 'Body', with: Faker::Lorem.characters(20)
 		  	click_button 'Create Book'
 		  	expect(page).to have_content 'successfully'
 		  end
