@@ -11,11 +11,12 @@ class ApplicationController < ActionController::Base
 
   #sign_out後のredirect先変更する。rootパスへ。rootパスはhome topを設定済み。
   def after_sign_out_path_for(resource)
-    user_path(resource)
+    # user_path(resource)
+    root_path
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:email])
     #sign_upの際にnameのデータ操作を許。追加したカラム。
   end
 end
