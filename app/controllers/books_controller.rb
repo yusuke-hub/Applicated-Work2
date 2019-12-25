@@ -23,21 +23,28 @@ class BooksController < ApplicationController
   	end
   end
 
+  # def edit
+  # 	@book = Book.find(params[:id])
+  #   if @book.user_id != current_user.id
+  #     redirect_to @book
+  #   end
+  # end
   def edit
-  	@book = Book.find(params[:id])
+    @book = Book.find(params[:id])
     if @book.user_id != current_user.id
-      redirect_to @book
+      flash[:success] ="error"
+      redirect_to books_path
     end
   end
-
 
 
   def update
   	@book = Book.new(book_params)
   	if @book.update(book_params)
-  		redirect_to @book, notice: "successfully updated book!"
+  		redirect_to book_path(@book.id)
+    flash[:success] = "You have updated book successfully."
   	else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
-  		render "edit"
+  		render :edit
   	end
   end
 
