@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   #sign_out後のredirect先変更する。rootパスへ。rootパスはhome topを設定済み。
   def after_sign_out_path_for(resource)
     # user_path(resource)
-    flash[:notice] = "Signed out successfully"
+    flash[:notice] = "Signed out successfully."
     root_path
   end
 
